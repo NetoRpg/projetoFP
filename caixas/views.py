@@ -72,11 +72,12 @@ def caixaExcluir(request, pk=0):
     except:
         return HttpResponseRedirect('/caixas/')
 
+def caixaFluxo(request):
+    sql = ("select cc.* from caixas_conta cc inner join pessoas_pessoa pp on pp.id = cc.pessoa_id where cc.data > '2010.05.12'")
+    #contas = Conta.objects.raw("SELECT * FROM caixas_conta WHERE caixa_data > 2010.01.01")
+    try:
+        contas = Conta.objects.raw(sql)
+    except:
+        contas = []
 
-
-
-    
-
-
-
-
+    return render(request, 'caixas/formFluxoCaixa.html', {'contas' : contas})
