@@ -59,10 +59,11 @@ def caixaPesquisar(request):
 def caixaEditar(request, pk=0):
     try:
         conta = Conta.objects.get(pk=pk)
+        pessoa = Pessoa.objects.get(id=conta.pessoa_id)
     except:
         return HttpResponseRedirect('/caixas/')
 
-    return render(request, 'caixas/formCaixas.html', {'conta': conta})
+    return render(request, 'caixas/formCaixas.html', {'conta': conta, 'pessoa': pessoa})
 
 def caixaExcluir(request, pk=0):
     try:
