@@ -21,9 +21,9 @@
             <select class="form-control" name="pessoa_id" id="pessoa_id" >
             <option value="0">SELECIONE UMA PESSOA</option>
             {% if pessoas != NULL %}
-            {% for pessoa in pessoas %}
-                <option value="{{ pessoa.id }}">{{ pessoa.nome }} - {{ pessoa.email }}</option>
-            {% endfor %}
+                {% for pessoa in pessoas %}
+                    <option value="{{ pessoa.id }}">{{ pessoa.nome }} - {{ pessoa.email }}</option>
+                {% endfor %}
             {% else %}
                 {% if pessoa.id == conta.pessoa_id %}
                 <option value="{{ pessoa.id }}" selected>{{ pessoa.nome }} - {{ pessoa.email }}</option>
@@ -60,7 +60,7 @@
 
             <div class="col-sm-5">
                 <div id="datetimepicker" class="input-append date" class="form-control">
-                    <input type="text" name="data" value="{{ conta.data }}" >
+                    <input type="text" name="data" value='{{ conta.data|date:"d/m/Y H:i:s" }}' >
                     <span class="add-on">
                         <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                     </span>
