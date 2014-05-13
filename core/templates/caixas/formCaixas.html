@@ -59,11 +59,9 @@
 
 
             <div class="col-sm-5">
-                <div id="datetimepicker" class="input-append date" class="form-control">
-                    <input type="text" name="data" value='{{ conta.data|date:"d/m/Y H:i:s" }}' >
-                    <span class="add-on">
-                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                    </span>
+                <div id="datetimepicker" class="input-group date">
+                    <input type="text" name="data" value='{{ conta.data|date:"d/m/Y H:i:s" }}' class="form-control">
+                    <span class="input-group-addon add-on glyphicon glyphicon-calendar"></span>
                 </div>
             </div>
     </div>
@@ -72,8 +70,8 @@
 
     <div align="center">
         <button type="submit" class="btn btn-success">Salvar Registro</button>
-        {% if pessoa.pk > 0 %}
-        <a class="btn btn-danger" href="/pessoas/excluir/{{ pessoa.pk }}/">Excluir</a>
+        {% if conta.pk > 0 %}
+        <a class="btn btn-danger" href="/caixas/excluir/{{ conta.pk }}/">Excluir</a>
         {% endif %}
     </div>
 </form>

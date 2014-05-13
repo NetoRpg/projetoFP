@@ -6,19 +6,15 @@
 <form class="form-horizontal" action="/caixas/fluxo/" method="POST" role="form">{% csrf_token %}
 
             <div class="col-sm-3">
-                <div id="datetimepicker" class="input-append date" class="form-control">
-                    <input type="text" name="data1" value='{{ data_inicial|date:"d/m/Y H:i:s" }}'>
-                    <span class="add-on">
-                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                    </span>
+                <div id="datetimepicker" class="input-group date">
+                    <input type="text" name="data_inicial" value='{{ data_inicial|date:"d/m/Y H:i:s" }}' class="form-control">
+                    <span class="input-group-addon add-on glyphicon glyphicon-calendar"></span>
                 </div>
             </div>
             <div class="col-sm-3">
-                <div id="datetimepicker1" class="input-append date" class="form-control">
-                    <input type="text" name="data2" value='{{ data_final|date:"d/m/Y H:i:s" }}'>
-                    <span class="add-on">
-                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                    </span>
+                <div id="datetimepicker1" class="input-group">
+                    <input type="text" name="data_final" value='{{ data_final|date:"d/m/Y H:i:s" }}' class="form-control">
+                    <span class="input-group-addon add-on glyphicon glyphicon-calendar"></span>
                 </div>
             </div>
 
@@ -26,7 +22,7 @@
                 <button type="submit" class="btn btn-success">Pesquisar</button>
             </div>
 </form>
-
+<br />
 <hr>
 <div class="table-responsive">
       <table class="table table-striped">
@@ -48,8 +44,19 @@
             <td>{{ conta.data|date:"d/m/Y" }}</td>
             <td>{{ conta.tipo }}</td>
           </tr>
-        {% endfor %}  
+        {% endfor %}
         </tbody>
+        {% if total != NULL %}
+        <tfoot>
+         <tr class="success">
+            <th>TOTAL:</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>{{ total }}</th>
+        </tr>
+        </tfoot>
+        {% endif %}
       </table>
 </div><!-- FIM TABELA -->
 
